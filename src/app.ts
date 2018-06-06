@@ -21,7 +21,7 @@ class App {
     this.app.use('/', router.mount());
   }
 
-  private config(): void{
+  private config(): void {
     // support application/json type post data
     this.app.use(bodyParser.json());
 
@@ -29,7 +29,8 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: false }));
   }
 
-  private mongoSetup(): void{
+  private mongoSetup(): void {
+    // We want global promises!
     (mongoose as any).Promise = global.Promise;
     mongoose.connect(this.mongoUrl);
   }
